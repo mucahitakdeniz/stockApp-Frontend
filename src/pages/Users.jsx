@@ -20,6 +20,7 @@ const Users = () => {
     last_name: "",
     is_active: "",
     is_staff: "",
+    is_superadmin: "",
   });
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -32,6 +33,7 @@ const Users = () => {
       last_name: "",
       is_active: "",
       is_staff: "",
+      is_superadmin: "",
     });
   };
   useEffect(() => {

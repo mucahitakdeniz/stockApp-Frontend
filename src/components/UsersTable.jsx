@@ -10,6 +10,7 @@ const UsersTable = ({ handleOpen, setInfo }) => {
   const { users } = useSelector((state) => state.user);
   const { deleteUserFunction } = useUserCall();
 
+  const rows = users.filter((item) => item.username != "superadmin");
   const columns = [
     { field: "id", headerName: "# ID", headerAling: "center", flex: 2 },
     {
@@ -71,6 +72,7 @@ const UsersTable = ({ handleOpen, setInfo }) => {
               last_name: user[0]?.last_name,
               is_active: user[0]?.is_active,
               is_staff: user[0]?.is_staff,
+              is_superadmin: user[0]?.is_superadmin,
               _id: user[0]?._id,
             });
             handleOpen();
@@ -96,7 +98,7 @@ const UsersTable = ({ handleOpen, setInfo }) => {
     <Box sx={{ width: "100%" }}>
       <DataGrid
         autoHeight
-        rows={users}
+        rows={rows}
         columns={columns}
         pageSizeOptions={[10, 20, 50, 100]}
         disableRowSelectionOnClick

@@ -15,7 +15,7 @@ const UserModal = ({ handleClose, open, info, setInfo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUserFunction(info._id, info);
-    handleClose()
+    handleClose();
   };
   return (
     <Modal
@@ -71,7 +71,7 @@ const UserModal = ({ handleClose, open, info, setInfo }) => {
             required
           />
           <FormControl fullWidth>
-            <InputLabel id="actice">Active</InputLabel>
+            <InputLabel id="active">Active</InputLabel>
             <Select
               labelId="is_active"
               id="is_active"
@@ -81,13 +81,13 @@ const UserModal = ({ handleClose, open, info, setInfo }) => {
             >
               {trueFalse.map((item, i) => (
                 <MenuItem key={i} value={item.toString()}>
-                  {item.toString()}
+                  {item.toString().toLocaleUpperCase()}
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
           <FormControl fullWidth>
-            <InputLabel id="actice">Staff</InputLabel>
+            <InputLabel id="staff">Staff</InputLabel>
             <Select
               labelId="is_staff"
               id="is_staff"
@@ -97,7 +97,23 @@ const UserModal = ({ handleClose, open, info, setInfo }) => {
             >
               {trueFalse.map((item, i) => (
                 <MenuItem key={i} value={item.toString()}>
-                  {item.toString()}
+                  {item.toString().toLocaleUpperCase()}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="admin">Admin</InputLabel>
+            <Select
+              labelId="is_superadmin"
+              id="is_superadmin"
+              name="is_superadmin"
+              value={info?.is_superadmin}
+              onChange={handleChange}
+            >
+              {trueFalse.map((item, i) => (
+                <MenuItem key={i} value={item.toString()}>
+                  {item.toString().toLocaleUpperCase()}
                 </MenuItem>
               ))}
             </Select>

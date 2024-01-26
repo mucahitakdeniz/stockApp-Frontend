@@ -29,8 +29,10 @@ const authSlice = createSlice({
     registerSuccess: (state, { payload }) => {
       state.loading = false;
       state.currentUser = payload?.data?.username;
+      state.isAdmin = payload?.data?.is_superadmin;
       state.token = payload?.token;
       state.error = false;
+      console.log(payload.data);
     },
     fetchFail: (state) => {
       state.loading = false;
