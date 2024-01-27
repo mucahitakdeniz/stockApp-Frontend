@@ -46,7 +46,9 @@ export default function Dashboard() {
 
           {currentUser && (
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Typography variant="h6" mr={3} color="greenyellow">{currentUser.currentUser}</Typography>
+              <Typography variant="h6" mr={3} color="greenyellow">
+                {currentUser.currentUser}
+              </Typography>
 
               <Button color="inherit" onClick={() => logout()}>
                 Logout

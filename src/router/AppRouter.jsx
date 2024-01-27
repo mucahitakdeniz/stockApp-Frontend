@@ -17,18 +17,18 @@ const AppRouter = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="stock" element={<PrivateRouter />}>
-          <Route path="" element={<Dashboard />}>
-            <Route index element={<Home />} />
-            <Route path="purchase" element={<Purchase />} />
-            <Route path="sales" element={<Sales />} />
-            <Route path="firms" element={<Firms />} />
-            <Route path="brands" element={<Brands />} />
-            <Route path="products" element={<Products />} />
-            <Route path="users" element={<Users />} />
+          <Route path="register" element={<Register />} />
+          <Route path="stock" element={<PrivateRouter />}>
+            <Route path="" element={<Dashboard />}>
+              <Route index element={<Home />} />
+              <Route path="purchase" element={<Purchase />} />
+              <Route path="sales" element={<Sales />} />
+              <Route path="firms" element={<Firms />} />
+              <Route path="brands" element={<Brands />} />
+              <Route path="products" element={<Products />} />
+              <Route path="users" element={<Users />} />
+            </Route>
           </Route>
-        </Route>
       </Routes>
     </Router>
   );

@@ -18,7 +18,7 @@ const useStockCall = () => {
   const getStockFunction = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`/${url}`);
+      const { data } = await axiosWithToken.get(`/${url}`);
       dispatch(getStockSuccess({ url, data }));
     } catch (error) {
       console.log(error);
@@ -32,9 +32,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const [products, categories, brands] = await Promise.all([
-        axiosWithToken(`/products`),
-        axiosWithToken(`/categories`),
-        axiosWithToken(`/brands`),
+        axiosWithToken.get(`/products`),
+        axiosWithToken.get(`/categories`),
+        axiosWithToken.get(`/brands`),
       ]);
       dispatch(
         getProdCatBrandsSuccess([
@@ -55,9 +55,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const [products, sales, brands] = await Promise.all([
-        axiosWithToken(`/products`),
-        axiosWithToken(`/sales`),
-        axiosWithToken(`/brands`),
+        axiosWithToken.get(`/products`),
+        axiosWithToken.get(`/sales`),
+        axiosWithToken.get(`/brands`),
       ]);
       dispatch(
         getProdSalesBrandsSuccess([products?.data, sales?.data, brands?.data])
@@ -74,8 +74,8 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const [sales, purchases] = await Promise.all([
-        axiosWithToken(`/sales`),
-        axiosWithToken(`/purchases`),
+        axiosWithToken.get(`/sales`),
+        axiosWithToken.get(`/purchases`),
       ]);
       dispatch(getSalesPurchasesSuccess([sales?.data, purchases?.data]));
     } catch (error) {
@@ -90,10 +90,10 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const [products, firms, brands, purchases] = await Promise.all([
-        axiosWithToken(`/products`),
-        axiosWithToken(`/firms`),
-        axiosWithToken(`/brands`),
-        axiosWithToken(`/purchases`),
+        axiosWithToken.get(`/products`),
+        axiosWithToken.get(`/firms`),
+        axiosWithToken.get(`/brands`),
+        axiosWithToken.get(`/purchases`),
       ]);
       dispatch(
         getProdFirmBrandsPruchasesSuccess([
@@ -114,7 +114,7 @@ const useStockCall = () => {
   const deleteStockFunction = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`/${url}/${id}`);
+      await axiosWithToken.get.delete(`/${url}/${id}`);
       toastSuccessNotify("Deletion successful");
 
       getStockFunction(url);
@@ -127,9 +127,8 @@ const useStockCall = () => {
   const createStockFunction = async (url, info) => {
     dispatch(fetchStart());
     try {
-   
-        await axiosWithToken.post(`/${url}/`, info);
-        toastSuccessNotify("Creation process successful");
+      await axiosWithToken.get.post(`/${url}/`, info);
+      toastSuccessNotify("Creation process successful");
 
       getStockFunction(url);
     } catch (error) {
@@ -145,7 +144,7 @@ const useStockCall = () => {
   const updateStockFunction = async (url, info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`/${url}/${info._id}`, info);
+      await axiosWithToken.get.put(`/${url}/${info._id}`, info);
       getStockFunction(url);
       toastSuccessNotify("Update process successful");
     } catch (error) {
