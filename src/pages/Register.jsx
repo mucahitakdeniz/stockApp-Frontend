@@ -7,15 +7,16 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
-import RegisterForm,{ registerSchema } from "../components/RegisterForm";
+import RegisterForm, { registerSchema } from "../components/RegisterForm";
 import useAuthCall from "../hooks/useAuthCall";
+import LoadingLoginRegister from "../components/LoadingLoginregister";
 
 const Register = () => {
-  const {register} =useAuthCall()
-
+  const { register } = useAuthCall();
 
   return (
     <Container maxWidth="lg">
+      <LoadingLoginRegister />
       <Grid
         container
         justifyContent="center"
@@ -62,14 +63,12 @@ const Register = () => {
             }}
             validationSchema={registerSchema}
             onSubmit={(values, action) => {
-              register(values)
+              register(values);
               action.resetForm();
               action.setSubmitting(false);
             }}
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
-
-          
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/">Do you have an account?</Link>

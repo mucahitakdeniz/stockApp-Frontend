@@ -11,18 +11,26 @@ import { Button } from "@mui/material";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useAuthCall from "../hooks/useAuthCall";
+import LoadingLoginRegister from "../components/LoadingLoginregister";
 
 const Login = () => {
-  const {login} =useAuthCall()
+  const { login } = useAuthCall();
   const loginSchema = object({
     email: string()
       .email("Please enter a valid email")
       .required("Email is a required field"),
-    password:string().required("Password is a required field").min(8,"At least 8 characters must be entered").matches(/\d+/,"Must contain at least one digit.").matches(/[a-z]/,"Must contain at least one lowercase letter.").matches(/[A-Z]/,"Must contain at least one uppercase letter").matches(/[!,?{}><%&$#£+-.]/,"At least one special character")
+    password: string()
+      .required("Password is a required field")
+      .min(8, "At least 8 characters must be entered")
+      .matches(/\d+/, "Must contain at least one digit.")
+      .matches(/[a-z]/, "Must contain at least one lowercase letter.")
+      .matches(/[A-Z]/, "Must contain at least one uppercase letter")
+      .matches(/[!,?{}><%&$#£+-.]/, "At least one special character"),
   });
 
   return (
     <Container maxWidth="lg">
+      <LoadingLoginRegister />
       <Grid
         container
         justifyContent="center"
@@ -61,7 +69,7 @@ const Login = () => {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, action) => {
-              login(values)
+              login(values);
               action.resetForm();
               action.setSubmitting(false);
             }}
