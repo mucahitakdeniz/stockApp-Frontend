@@ -114,7 +114,7 @@ const useStockCall = () => {
   const deleteStockFunction = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.get.delete(`/${url}/${id}`);
+      await axiosWithToken.delete(`/${url}/${id}`);
       toastSuccessNotify("Deletion successful");
 
       getStockFunction(url);
@@ -127,7 +127,7 @@ const useStockCall = () => {
   const createStockFunction = async (url, info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.get.post(`/${url}/`, info);
+      await axiosWithToken.post(`/${url}/`, info);
       toastSuccessNotify("Creation process successful");
 
       getStockFunction(url);
@@ -144,7 +144,7 @@ const useStockCall = () => {
   const updateStockFunction = async (url, info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.get.put(`/${url}/${info._id}`, info);
+      await axiosWithToken.put(`/${url}/${info._id}`, info);
       getStockFunction(url);
       toastSuccessNotify("Update process successful");
     } catch (error) {
