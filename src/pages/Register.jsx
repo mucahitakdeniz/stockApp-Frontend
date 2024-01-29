@@ -9,14 +9,14 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import RegisterForm, { registerSchema } from "../components/RegisterForm";
 import useAuthCall from "../hooks/useAuthCall";
-import LoadingLoginRegister from "../components/LoadingLoginregister";
+import Loading from "../components/Loading";
 
 const Register = () => {
   const { register } = useAuthCall();
 
   return (
     <Container maxWidth="lg">
-      <LoadingLoginRegister />
+      <Loading />
       <Grid
         container
         justifyContent="center"

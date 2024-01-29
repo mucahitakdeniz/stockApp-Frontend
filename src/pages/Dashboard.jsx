@@ -15,7 +15,6 @@ import Hidden from "@mui/material/Hidden";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import LiveClock from "../components/LiveClock";
-import Loading from "../components/Loading";
 
 const drawerWidth = 220;
 
@@ -110,7 +109,6 @@ export default function Dashboard() {
           ml: 0,
         }}
       >
-        <Loading />
         <Toolbar />
         <Outlet />
       </Box>

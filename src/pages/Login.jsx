@@ -11,7 +11,7 @@ import { Button } from "@mui/material";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useAuthCall from "../hooks/useAuthCall";
-import LoadingLoginRegister from "../components/LoadingLoginregister";
+import Loading from "../components/Loading";
 
 const Login = () => {
   const { login } = useAuthCall();
@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <Container maxWidth="lg">
-      <LoadingLoginRegister />
+      <Loading />
       <Grid
         container
         justifyContent="center"
